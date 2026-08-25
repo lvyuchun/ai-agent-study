@@ -9,6 +9,7 @@ class course:
     name: str
     score: int
     Learn_name: str
+    choice: bool
 class learn_basic:
     def __init__(self,name,score,final_score):
         self.name = name

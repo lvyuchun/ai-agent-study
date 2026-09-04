@@ -1,10 +1,9 @@
 from openai import OpenAI
-
-# 关键：用 OpenAI SDK 但把 base_url 指向 DeepSeek
-client = OpenAI(
-    api_key="1",                    # ← 换成你的 Key
-    base_url="https://api.deepseek.com",      # ← 换地址就换模型商
-)
+import os
+from dotenv import load_dotenv
+load_dotenv("C:\\Users\\Asus\\ai-agent-study\\.env")   # 绝对路径,避免在不同目录下运行时找不到 .env 文件
+api_key = os.getenv('API_KEY_DEEPSEEK')  # ← 这里换成你在 DeepSeek 官网申请的 Key
+client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
 
 # 第一次对话：system + user
 resp = client.chat.completions.create(

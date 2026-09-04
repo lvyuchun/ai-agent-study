@@ -1,9 +1,9 @@
 from openai import OpenAI
-
-client = OpenAI(
-    api_key="1",                              # ← 智谱控制台拿的
-    base_url="https://open.bigmodel.cn/api/paas/v4",    # ← 智谱的正确地址
-)
+import os
+from dotenv import load_dotenv
+load_dotenv("C:\\Users\\Asus\\ai-agent-study\\.env")   # 绝对路径,避免在不同目录下运行时找不到 .env 文件
+api_key = os.getenv('API_KEY_ZH')  # ← 这里换成你在智谱官网申请的 Key
+client = OpenAI(api_key=api_key, base_url="https://open.bigmodel.cn/api/paas/v4/")
 
 resp = client.chat.completions.create(
     model="glm-4-flash",          # ← 智谱的免费模型
